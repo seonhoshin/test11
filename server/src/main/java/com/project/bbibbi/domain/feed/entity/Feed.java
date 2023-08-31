@@ -17,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Feed extends BaseEntity{
+public class Feed {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
