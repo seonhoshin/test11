@@ -1,21 +1,20 @@
 package com.project.bbibbi.domain.feed.controller;
 
-import com.project.bbibbi.domain.feed.mapper.FeedMapper;
-import com.project.bbibbi.domain.feed.service.FeedService;
-import com.project.bbibbi.domain.feed.dto.*;
-import com.project.bbibbi.domain.feed.entity.*;
-import com.project.bbibbi.global.response.MultiResponseDto;
-import com.project.bbibbi.global.response.SingleResponseDto;
-import org.springframework.http.HttpStatus;
+import com.project.bbibbi.feed.dto.FeedPostDto;
+import com.project.bbibbi.feed.entity.Feed;
+import com.project.bbibbi.feed.entity.FeedImage;
+import com.project.bbibbi.feed.mapper.FeedMapper;
+import com.project.bbibbi.feed.service.FeedService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Positive;
 import java.net.URI;
-import java.util.List;
 
 @RestController
 @RequestMapping("/feed")
