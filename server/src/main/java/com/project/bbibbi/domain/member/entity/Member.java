@@ -1,14 +1,15 @@
 package com.project.bbibbi.domain.member.entity;
 
+import com.project.bbibbi.domain.feed.entity.Feed;
+import com.project.bbibbi.domain.feedlike.entity.FeedLike;
 import com.project.bbibbi.global.entity.BaseEntity;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -55,20 +56,20 @@ public class Member extends BaseEntity {
 //    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
 //    private List<TipReplyLike> tipReplyLikes = new ArrayList<>();
 //
-//    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
-//    private List<Feed> feeds = new ArrayList<>();
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<Feed> feeds = new ArrayList<>();
 //
 //    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
 //    private List<FeedReply> feedReplies = new ArrayList<>();
 //
 //    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
-//    private List<FeedComment> feedComments = new ArrayList<>();
+//    private List<FeedComment> tfeedComments = new ArrayList<>();
 //
 //    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
 //    private List<FeedBookmark> feedBookmarks = new ArrayList<>();
 //
-//    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
-//    private List<FeedLike> feedLikes = new ArrayList<>();
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<FeedLike> feedLikes = new ArrayList<>();
 //
 //    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
 //    private List<FeedReplyLike> feedReplyLikes = new ArrayList<>();

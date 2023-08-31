@@ -1,5 +1,8 @@
 package com.project.bbibbi.domain.feed.entity;
 
+//import com.project.bbibbi.domain.member.entity.Member;
+import com.project.bbibbi.domain.member.entity.Member;
+import com.project.bbibbi.global.entity.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Feed {
+public class Feed extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,34 +35,42 @@ public class Feed {
     @Column(length = 3000)
     private String coverPhoto;
 
-    // enum 확인되면 아래 내용들 이렇게 변환
-//    @Enumerated(value = EnumType.STRING)
-//    @Column(length = 4, nullable = false)
-//    private RoomType roomType;
+    @Enumerated(value = EnumType.STRING)
+    @Column(length = 20, nullable = false)
+    private RoomType roomType;
 
-    @Column(length = 4, nullable = false)
-    private String roomType;
+    @Enumerated(value = EnumType.STRING)
+    @Column(length = 20, nullable = false)
+    private RoomSize roomSize;
 
-    @Column(length = 4, nullable = false)
-    private String roomSize;
+    @Enumerated(value = EnumType.STRING)
+    @Column(length = 20, nullable = false)
+    private RoomCount roomCount;
 
-    @Column(length = 4, nullable = false)
-    private String roomCount;
+    @Enumerated(value = EnumType.STRING)
+    @Column(length = 20, nullable = false)
+    private RoomInfo roomInfo;
 
-    @Column(length = 4, nullable = false)
-    private String roomInfo;
+    @Enumerated(value = EnumType.STRING)
+    @Column(length = 20, nullable = false)
+    private Location location;
 
-    @Column(length = 4, nullable = false)
-    private String location;
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
 
-    // 멤버 확인시 주석 해제
-//    @ManyToOne
-//    @JoinColumn(name = "member_id")
-//    private Member member;
+//    @Column
+//    private Long memberId;
 
-    @OneToMany(mappedBy = "feed")
+    @OneToMany(mappedBy = "feed", cascade = CascadeType.REMOVE)
     private List<FeedImage> images = new ArrayList<>();
 
+    // Feed 좋아요 조인
+    @OneToMany(mappedBy = "feed", cascade = CascadeType.REMOVE)
+    private List<FeedLike> feedLikes = new ArrayList<>();
 
+    // 이 게시물의 좋아요 개수
+    @Transient
+    private Integer likeCount;
 
 }
