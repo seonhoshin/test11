@@ -27,13 +27,13 @@ public class Tip {
 
     @Column(nullable = false)
     private String coverPhoto;
-    
+
     @Column(nullable = false)
     private String content;
 
     @Column
     private int views;
-    
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id", nullable = false)
     private Member member;
